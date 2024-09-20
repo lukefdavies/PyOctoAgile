@@ -1,0 +1,29 @@
+2024-09-20 19:10:54,479 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-09-20 19:10:54,479 - INFO - Starting to schedule temperature changes.
+2024-09-20 19:10:54,479 - DEBUG - Reading heating periods from file.
+2024-09-20 19:10:54,485 - DEBUG - Loaded period: 05:00 to 05:30
+2024-09-20 19:10:54,485 - DEBUG - Loaded period: 05:30 to 06:00
+2024-09-20 19:10:54,485 - DEBUG - Loaded period: 06:00 to 06:30
+2024-09-20 19:10:54,485 - DEBUG - Loaded period: 10:30 to 11:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 11:00 to 11:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 11:30 to 12:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 12:00 to 12:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 12:30 to 13:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 13:00 to 13:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 13:30 to 14:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 14:00 to 14:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 14:30 to 15:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 15:00 to 15:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 15:30 to 16:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 20:30 to 21:00
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 21:00 to 21:30
+2024-09-20 19:10:54,486 - DEBUG - Loaded period: 21:30 to 22:00
+2024-09-20 19:10:54,486 - DEBUG - Deleting *all* jobs
+2024-09-20 19:10:54,487 - INFO - Cleared all previous schedules.
+2024-09-20 19:10:54,487 - INFO - Scheduled low temperature at 00:00
+2024-09-20 19:10:54,487 - INFO - Scheduled high temperature at 05:00
+2024-09-20 19:10:54,487 - INFO - Scheduled low temperature at 06:30
+2024-09-20 19:10:54,487 - INFO - Scheduled high temperature at 10:30
+2024-09-20 19:10:54,487 - INFO - Scheduled low temperature at 16:00
+2024-09-20 19:10:54,487 - INFO - Scheduled high temperature at 20:30
+2024-09-20 19:10:54,487 - INFO - Scheduled low temperature at 22:00
