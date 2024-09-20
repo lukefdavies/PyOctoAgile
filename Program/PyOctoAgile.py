@@ -13,12 +13,12 @@ LOW_TEMPERATURE_COMMAND = ['python3', 'living_room.py', str(LOW_TEMPERATURE)]
 GET_PRICES_COMMAND = ['python3', 'return_agile_prices.py']
 
 # Set up logging
-logging.basicConfig(filename='pyoctoagile.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='../logs/pyoctoagile.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def read_periods():
     """Read sorted periods from the file."""
     logging.debug("Reading heating periods from file.")
-    with open('Program\heating_periods.txt', 'r') as f:
+    with open('heating_periods.txt', 'r') as f:
         lines = [line.strip() for line in f.readlines()]
 
     periods = []
