@@ -8,8 +8,8 @@ import time
 HIGH_TEMPERATURE = 21
 LOW_TEMPERATURE = 16
 
-HIGH_TEMPERATURE_COMMAND = ['python3', 'living_room.py', str(HIGH_TEMPERATURE)]
-LOW_TEMPERATURE_COMMAND = ['python3', 'living_room.py', str(LOW_TEMPERATURE)]
+HIGH_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(HIGH_TEMPERATURE)]
+LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATURE)]
 GET_PRICES_COMMAND = ['python3', 'return_agile_prices.py']
 
 # Set up logging
