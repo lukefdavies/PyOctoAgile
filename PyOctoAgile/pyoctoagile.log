@@ -1,0 +1,24 @@
+2024-09-19 22:34:05,197 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-09-19 22:37:19,490 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-09-19 22:37:19,490 - INFO - Starting to schedule temperature changes.
+2024-09-19 22:37:19,498 - INFO - Cleared all previous schedules.
+2024-09-19 22:37:19,499 - INFO - Scheduled low temperature at 00:00
+2024-09-19 22:37:19,499 - INFO - Scheduled high temperature at 05:00
+2024-09-19 22:37:19,499 - INFO - Scheduled low temperature at 06:30
+2024-09-19 22:37:19,500 - INFO - Scheduled high temperature at 10:30
+2024-09-19 22:37:19,500 - INFO - Scheduled low temperature at 16:00
+2024-09-19 22:37:19,500 - INFO - Scheduled high temperature at 20:30
+2024-09-19 22:37:19,500 - INFO - Scheduled low temperature at 22:00
+2024-09-20 00:00:02,494 - INFO - Executed command: python3 living_room.py 16
+2024-09-20 00:02:00,646 - INFO - Reloading heating periods from file.
+2024-09-20 00:02:00,646 - INFO - Starting to schedule temperature changes.
+2024-09-20 00:02:00,648 - INFO - Cleared all previous schedules.
+2024-09-20 00:02:00,648 - INFO - Scheduled low temperature at 00:00
+2024-09-20 00:02:00,648 - INFO - Scheduled high temperature at 05:00
+2024-09-20 00:02:00,649 - INFO - Scheduled low temperature at 06:30
+2024-09-20 00:02:00,649 - INFO - Scheduled high temperature at 10:30
+2024-09-20 00:02:00,649 - INFO - Scheduled low temperature at 16:00
+2024-09-20 00:02:00,649 - INFO - Scheduled high temperature at 20:30
+2024-09-20 00:02:00,649 - INFO - Scheduled low temperature at 22:00
+2024-09-20 05:00:02,222 - INFO - Executed command: python3 living_room.py 21
+2024-09-20 06:30:01,348 - INFO - Executed command: python3 living_room.py 16
