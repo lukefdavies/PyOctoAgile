@@ -3,8 +3,8 @@ Description=PyOctoAgile Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/pi/PyOctoAgile/Program/PyOctoAgile.py
-WorkingDirectory=/home/pi/PyOctoAgile/Program
+ExecStart=/usr/bin/python3 ~/PyOctoAgile/Program/PyOctoAgile.py
+WorkingDirectory= ~/PyOctoAgile/Program
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
