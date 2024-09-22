@@ -1,3 +1,4 @@
+![Logo](../Program/icon.webp)
 # PyOctoAgile
 
 PyOctoAgile is a Python-based tool designed to automate thermostat control based on energy pricing data from Octopus Energy’s Agile tariff. The system schedules heating to maximize cost savings by adjusting temperatures during lower-priced periods.
