@@ -13,7 +13,7 @@ LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATU
 GET_PRICES_COMMAND = ['python3', 'return_agile_periods.py']
 
 # Set up logging
-logging.basicConfig(filename='pyoctoagile.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='pyoctoagile.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def read_periods():
     """Read sorted periods from the file."""
