@@ -37,7 +37,7 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
 
 1. **Clone the repository**:
    ```bash
-   git clone git@github.com:yourusername/PyOctoAgile.git
+   git clone https://github.com/lukefdavies/PyOctoAgile.git
    ```
 
 2. **Install dependencies**:
