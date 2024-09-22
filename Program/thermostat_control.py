@@ -3,7 +3,7 @@ import sys
 
 # Replace with your Home Assistant URL and Long-Lived Access Token
 HOME_ASSISTANT_URL = "http://127.0.0.1:8123"
-API_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwNTBkM2M3NTg3NDA0ZWE4YWNiMzA4ODgwMDlhMTUxYSIsImlhdCI6MTcyNjYwNzQ1MywiZXhwIjoyMDQxOTY3NDUzfQ.1nTSbBVstb2yE1H6QnjnK0_RJuX1E7yv_FIFUS6n3f4"
+API_TOKEN = "HOME_ASSISTANT_TOKEN"
 
 # Thermostat entity IDs
 ENTITY_IDS = ["climate.living_room", "climate.hallway"]
