@@ -6,9 +6,15 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
 ## Features
 
 - **Fetch Agile Tariff Prices**: Retrieves half-hourly electricity prices for the day and identifies periods that fall below a specified percentile.
-- **Thermostat Control**: Automatically sets the temperature for multiple thermostats based on the retrieved pricing data, targeting high temperatures during cheaper periods.
-- **Automated Scheduling**: Uses ```schedule``` to automate daily tasks such as fetching new price data and re-scheduling thermostat settings.
+- **Thermostat Control**: Automatically sets the temperature for multiple thermostats based on the retrieved pricing data, targeting high temperatures during cheaper periods. Requires integration with Home Assistant, which acts as the hub for communicating with connected thermostats.
+- **Automated Scheduling**: Uses {code}schedule{code} to automate daily tasks such as fetching new price data and re-scheduling thermostat settings, ensuring optimal heating schedules based on real-time price data.
+- **Home Assistant Dependency**: Fully integrates with Home Assistant to control various compatible smart thermostats. This integration is essential for the functionality of PyOctoAgile and requires that users have an active Home Assistant setup.
 
+## Requirements
+
+- **Home Assistant**: You must have a Home Assistant instance running with network access to the same environment where PyOctoAgile is deployed.
+- **Connected Thermostats**: At least one compatible smart thermostat must be connected and configured within your Home Assistant setup.
+- **Octopus Energy Account**: An active account with Octopus Energy and subscription to the Agile tariff to access the dynamic pricing data.
 
 ## Planned Improvements
 
@@ -18,6 +24,7 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
 - **User Customization**: Enhance user settings to include custom schedules and temperature settings, allowing for greater personalization.
 - **Dynamic Temperature Adjustment**: Monitors climate ID data to adjust the percentile of timeslots used for heating, enhancing efficiency and comfort based on real-time temperature performance.
 - **Occupancy-Based Control**: Utilizes home network data to determine occupancy, adjusting heating operations based on the presence of registered smartphones or occupancy sensors.
+- **Support for Multiple Energy Providers**: Extend compatibility to include additional energy providers who offer APIs and flexible tariffs, broadening the applicability of PyOctoAgile across different regions and market conditions.
 
 ## Structure
 
