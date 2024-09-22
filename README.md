@@ -7,7 +7,7 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
 
 - **Fetch Agile Tariff Prices**: Retrieves half-hourly electricity prices for the day and identifies periods that fall below a specified percentile.
 - **Thermostat Control**: Automatically sets the temperature for multiple thermostats based on the retrieved pricing data, targeting high temperatures during cheaper periods. Requires integration with Home Assistant, which acts as the hub for communicating with connected thermostats.
-- **Automated Scheduling**: Uses {code}schedule{code} to automate daily tasks such as fetching new price data and re-scheduling thermostat settings, ensuring optimal heating schedules based on real-time price data.
+- **Automated Scheduling**: Uses ```schedule``` to automate daily tasks such as fetching new price data and re-scheduling thermostat settings, ensuring optimal heating schedules based on real-time price data.
 - **Home Assistant Dependency**: Fully integrates with Home Assistant to control various compatible smart thermostats. This integration is essential for the functionality of PyOctoAgile and requires that users have an active Home Assistant setup.
 
 ## Requirements
