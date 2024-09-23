@@ -53,8 +53,48 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
    pip install requests numpy pytz schedule
    ```
 
-3. **Set up Home Assistant**:  
-   - Replace `HOME_ASSISTANT_URL` and `API_TOKEN` in `thermostat_control.py` with your Home Assistant instance and long-lived access token.
+### 3. Set up Home Assistant
+
+You will need to configure the Home Assistant URL and token in `thermostat_control.py` to communicate with your Home Assistant instance.
+
+#### Option 1: Replace Directly in the Script
+1. Replace the placeholders `HOME_ASSISTANT_URL` and `API_TOKEN` in `thermostat_control.py` with your actual Home Assistant instance URL and long-lived access token.
+   - **Example**:
+     ```python
+     HOME_ASSISTANT_URL = "http://your-home-assistant.local:8123"
+     API_TOKEN = "your-long-lived-access-token-here"
+     ```
+
+#### Option 2: Use Environment Variables for Better Security
+
+A more secure approach is to avoid hardcoding the access token in your script. Instead, you can store it as an environment variable. Here's how you can do that:
+
+1. **Add `HOME_ASSISTANT_TOKEN` to your environment variables**:
+   - **Linux/macOS**:
+     1. Open a terminal.
+     2. Add the token to your `.bashrc`, `.zshrc`, or similar shell config file by running:
+        ```bash
+        echo 'export HOME_ASSISTANT_TOKEN="your-long-lived-access-token-here"' >> ~/.bashrc
+        ```
+     3. Reload the shell configuration by running:
+        ```bash
+        source ~/.bashrc
+        ```
+
+2. **Modify `thermostat_control.py` to use the environment variable**:
+   - Instead of hardcoding the token in your script, use Python's `os` module to retrieve the token from the environment:
+     ```python
+     import os
+
+     HOME_ASSISTANT_URL = "http://your-home-assistant.local:8123"
+     API_TOKEN = os.getenv('HOME_ASSISTANT_TOKEN')
+
+     if not API_TOKEN:
+         raise ValueError("Error: HOME_ASSISTANT_TOKEN not set in environment variables.")
+     ```
+
+3. **Run your script**:
+   Once the environment variable is set, you can run your script as normal, and it will automatically pull the `HOME_ASSISTANT_TOKEN` from your environment.
 
 4. **Set up Octopus Energy API**:
    - In `return_agile_periods.py`, replace `PRODUCT_CODE` and `TARIFF_CODE` with your relevant Octopus Energy product and tariff codes.
