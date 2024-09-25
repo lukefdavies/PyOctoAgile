@@ -18,12 +18,14 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
 
 ## Planned Improvements
 
+- **Configuration Script (`config.py`)**: Introduce a configuration script (`config.py`) that allows users to easily modify key variables (such as tariff codes, thermostat IDs, temperatures, etc.) with validation checks. This will store settings in a centralized `config.json` file, simplifying configuration management.
+- **Move to `config.json` for Variables**: Shift to using a `config.json` file for storing all configurable variables (tariffs, thermostat settings, schedules, etc.), allowing for easier updates and integration with the planned Web Interface and future APIs.
 - **Web Interface**: Implement a web-based configuration interface to allow users to modify settings easily without direct interaction with the backend code.
 - **Advanced Analytics**: Integrate advanced analytics to track heating performance and energy savings over time.
 - **Enhanced Error Handling**: Develop robust error handling and logging capabilities to ensure the system's reliability and ease troubleshooting.
 - **User Customization**: Enhance user settings to include custom schedules and temperature settings, allowing for greater personalization.
-- **Dynamic Temperature Adjustment**: Monitors climate ID data to adjust the percentile of timeslots used for heating, enhancing efficiency and comfort based on real-time temperature performance.
-- **Occupancy-Based Control**: Utilizes home network data to determine occupancy, adjusting heating operations based on the presence of registered smartphones or occupancy sensors.
+- **Dynamic Temperature Adjustment**: Monitor climate ID data to adjust the percentile of timeslots used for heating, enhancing efficiency and comfort based on real-time temperature performance.
+- **Occupancy-Based Control**: Utilize home network data to determine occupancy, adjusting heating operations based on the presence of registered smartphones or occupancy sensors.
 - **Support for Multiple Energy Providers**: Extend compatibility to include additional energy providers who offer APIs and flexible tariffs, broadening the applicability of PyOctoAgile across different regions and market conditions.
 
 ## Structure
