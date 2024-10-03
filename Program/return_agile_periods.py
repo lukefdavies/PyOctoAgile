@@ -16,65 +16,56 @@ utc = pytz.utc
 local_tz = pytz.timezone("Europe/London")
 
 def convert_to_local_time(utc_time_str):
-    # Convert string to UTC datetime object
+    """Convert a UTC time string to local time (GMT/BST)."""
     utc_time = datetime.strptime(utc_time_str, "%Y-%m-%dT%H:%M:%SZ")
-    utc_time = utc_time.replace(tzinfo=pytz.utc)  # Assign the correct timezone
-
-    # Convert to local time (BST or GMT depending on date)
+    utc_time = utc_time.replace(tzinfo=utc)
     local_time = utc_time.astimezone(local_tz)
     return local_time
 
 def get_daily_prices():
-    # Fetch pricing data from Octopus API
+    """Fetch pricing data from Octopus API and filter for today's prices."""
     response = requests.get(octopus_api_url)
     prices = response.json()
 
-    # Filter for prices for today
-    today_start = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=local_tz)
+    today_start = datetime.now(local_tz).replace(hour=0, minute=0, second=0, microsecond=0)
     today_end = today_start + timedelta(hours=23, minutes=59)
 
-    # Collect all prices for today
     all_prices = [price for price in prices['results']
                   if today_start <= convert_to_local_time(price['valid_from']) <= today_end]
 
     return all_prices
 
 def filter_daytime_prices(prices):
+    """Filter prices to only include morning and daytime periods (5am to 10pm)."""
     daytime_prices = []
     for price in prices:
         start_time = convert_to_local_time(price['valid_from'])
-        hour = start_time.hour
-
-        # Keep only morning and daytime periods
-        if 5 <= hour < 22:  # Morning and Daytime (5am to 10pm)
+        if 5 <= start_time.hour < 22:
             daytime_prices.append(price)
-
     return daytime_prices
 
 def calculate_percentile(prices, percentile):
-    # Extract price values and calculate the given percentile
+    """Calculate the given percentile for the list of prices."""
     values = [price['value_inc_vat'] for price in prices]
     return np.percentile(values, percentile)
 
 def find_below_percentile_prices(prices, percentile):
+    """Find prices below the given percentile."""
     threshold = calculate_percentile(prices, percentile)
-    below_percentile = [price for price in prices if price['value_inc_vat'] < threshold]
-    return below_percentile
+    return [price for price in prices if price['value_inc_vat'] < threshold]
 
-# Main logic
-prices = get_daily_prices()
-daytime_prices = filter_daytime_prices(prices)
-threshold_percentile = PERCENTILE_THRESHOLD
-below_percentile_prices = find_below_percentile_prices(daytime_prices, threshold_percentile)
-
-# Sort periods by time
-sorted_below_percentile_prices = sorted(below_percentile_prices, key=lambda x: convert_to_local_time(x['valid_from']))
-
-# Save results to a file with just the time periods
-with open('heating_periods.txt', 'w') as f:
-    for price in sorted_below_percentile_prices:
-        start_time = convert_to_local_time(price['valid_from'])
-        end_time = start_time + timedelta(minutes=30)
-        f.write(f"{start_time.strftime('%H:%M')} - {end_time.strftime('%H:%M')}\n")
-
-print(f"Periods below {threshold_percentile}th percentile price saved to 'heating_periods.txt'.")
+def get_heating_periods():
+    """Main function to get sorted periods below the percentile."""
+    prices = get_daily_prices()
+    daytime_prices = filter_daytime_prices(prices)
+    below_percentile_prices = find_below_percentile_prices(daytime_prices, PERCENTILE_THRESHOLD)
+    
+    # Sort periods by time
+    sorted_periods = sorted(below_percentile_prices, key=lambda x: convert_to_local_time(x['valid_from']))
+    
+    # Return start and end times for each period
+    periods = [(convert_to_local_time(p['valid_from']).strftime('%H:%M'),
+                (convert_to_local_time(p['valid_from']) + timedelta(minutes=30)).strftime('%H:%M'))
+               for p in sorted_periods]
+    
+    return periods
