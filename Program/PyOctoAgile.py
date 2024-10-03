@@ -5,8 +5,8 @@ import schedule
 import time
 
 # Configurable temperatures
-HIGH_TEMPERATURE = 21
-LOW_TEMPERATURE = 16
+HIGH_TEMPERATURE = 20.5
+LOW_TEMPERATURE = 15
 
 HIGH_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(HIGH_TEMPERATURE)]
 LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATURE)]
@@ -42,9 +42,9 @@ def schedule_temperatures():
     now = datetime.datetime.now().time()
     periods = read_periods()
 
-    # Clear all existing schedules
-    schedule.clear()
-    logging.info("Cleared all previous schedules.")
+    # Clear all temperature-related schedules
+    schedule.clear('temperature')
+    logging.info("Cleared all previous temperature schedules.")
 
     # Convert periods into 30-minute intervals for scheduling
     intervals = []
@@ -61,7 +61,7 @@ def schedule_temperatures():
             if period_start <= start_interval < period_end:
                 # If within a high temperature period and last scheduled was not high, schedule high temperature
                 if last_scheduled_temp != 'high':
-                    schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, HIGH_TEMPERATURE_COMMAND)
+                    schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, HIGH_TEMPERATURE_COMMAND).tag('temperature')
                     logging.info(f"Scheduled high temperature at {start_interval.strftime('%H:%M')}")
                     last_scheduled_temp = 'high'
                 scheduled = True
@@ -69,7 +69,7 @@ def schedule_temperatures():
 
         if not scheduled and last_scheduled_temp != 'low':
             # Schedule low temperature if not within any high temperature period and last scheduled was not low
-            schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, LOW_TEMPERATURE_COMMAND)
+            schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, LOW_TEMPERATURE_COMMAND).tag('temperature')
             logging.info(f"Scheduled low temperature at {start_interval.strftime('%H:%M')}")
             last_scheduled_temp = 'low'
 
@@ -81,7 +81,16 @@ def execute_command(command):
 def reload_periods():
     """Reload the heating periods from the file and reschedule temperatures."""
     logging.info("Reloading heating periods from file.")
-    schedule_temperatures()  # Reschedule based on the updated periods
+
+    # Clear only temperature-related schedules, but retain the daily price and period update schedules
+    schedule.clear('temperature')
+
+    # Reschedule temperatures
+    schedule_temperatures()
+
+    # Re-add the schedules for retrieving prices and reloading periods
+    schedule.every().day.at("00:01").do(return_prices).tag('prices')
+    schedule.every().day.at("00:02").do(reload_periods).tag('reload')
 
 def return_prices():
     """Get the prices for a new day."""
@@ -93,9 +102,13 @@ if __name__ == "__main__":
     logging.info("Starting the OctoPyAgile temperature scheduler.")
     schedule_temperatures()
 
+    # Fetch prices and reload periods immediately on script start
+    return_prices()
+    reload_periods()
+
     # Schedule daily reloading of periods and prices
-    schedule.every().day.at("00:01").do(return_prices)
-    schedule.every().day.at("00:02").do(reload_periods)
+    schedule.every().day.at("00:01").do(return_prices).tag('prices')
+    schedule.every().day.at("00:02").do(reload_periods).tag('reload')
 
     # Run the scheduler
     while True:
