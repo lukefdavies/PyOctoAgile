@@ -47,8 +47,18 @@ PyOctoAgile is a Python-based tool designed to automate thermostat control based
    '''git clone https://github.com/lukefdavies/PyOctoAgile.git'''
 
 2. **Install dependencies**:
-   Ensure you have `requests`, `numpy`, `pytz`, and `schedule` installed. You can install them with:
-   '''pip install requests numpy pytz schedule'''
+   Ensure you have the following Python packages installed:
+   
+   - `requests`: For making HTTP requests to the Octopus Energy and Home Assistant APIs.
+   - `numpy`: For calculating percentiles from price data.
+   - `pytz`: For handling time zone conversions (BST/GMT).
+   - `schedule`: For managing the scheduling of thermostat changes and price fetching.
+   - `logging`: For logging activity and debugging (usually part of the standard Python library).
+   - `os`: For managing environment variables (also part of the standard Python library).
+
+You can install the external dependencies with:
+
+```pip install requests numpy pytz schedule```
 
 ### 3. Set up Home Assistant
 
