@@ -3,7 +3,8 @@ import logging
 import subprocess
 import schedule
 import time
-from return_agile_prices import get_heating_periods  # Import the function
+from return_agile_periods import get_heating_periods  # Import the function
+import os
 
 # Configurable temperatures
 HIGH_TEMPERATURE = 20.5
@@ -13,17 +14,20 @@ HIGH_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(HIGH_TEMPERA
 LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATURE)]
 
 # Set up logging
-logging.basicConfig(level=logging.DEBUG)
-logging.debug(f"Import successful: {get_heating_periods}")
-
+log_file = os.path.expanduser('~/PyOctoAgile/Program/pyoctoagile.log')
+logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.info("Logging initialized.")
 
 def schedule_temperatures():
     """Schedule temperature changes based on the sorted periods."""
     logging.info("Starting to schedule temperature changes.")
     now = datetime.datetime.now().time()
 
-    # Get the heating periods directly from return_agile_prices
-    periods = get_heating_periods()
+    # Get the heating periods and the percentile threshold
+    periods, percentile_threshold = get_heating_periods()
+
+    # Log the calculated 50th percentile price
+    logging.info(f"Calculated 50th Percentile Threshold: {percentile_threshold:.2f}p")
 
     # Clear all existing schedules
     schedule.clear()
