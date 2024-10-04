@@ -13,7 +13,9 @@ HIGH_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(HIGH_TEMPERA
 LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATURE)]
 
 # Set up logging
-logging.basicConfig(filename='pyoctoagile.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG)
+logging.debug(f"Import successful: {get_heating_periods}")
+
 
 def schedule_temperatures():
     """Schedule temperature changes based on the sorted periods."""
