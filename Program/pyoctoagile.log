@@ -1,0 +1,112 @@
+2024-10-04 19:54:56,654 - INFO - Logging initialized.
+2024-10-04 19:54:56,654 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 19:54:56,654 - INFO - Starting to schedule temperature changes.
+2024-10-04 19:54:56,814 - INFO - Calculated 50th Percentile Threshold: 20.09p
+2024-10-04 19:54:56,815 - INFO - Cleared all previous schedules.
+2024-10-04 19:54:56,817 - INFO - Scheduled low temperature at 00:00
+2024-10-04 19:54:56,826 - INFO - Scheduled high temperature at 05:00
+2024-10-04 19:54:56,828 - INFO - Scheduled low temperature at 06:00
+2024-10-04 19:54:56,833 - INFO - Scheduled high temperature at 09:00
+2024-10-04 19:54:56,834 - INFO - Scheduled low temperature at 09:30
+2024-10-04 19:54:56,835 - INFO - Scheduled high temperature at 10:30
+2024-10-04 19:54:56,842 - INFO - Scheduled low temperature at 16:00
+2024-10-04 19:54:56,850 - INFO - Scheduled high temperature at 20:30
+2024-10-04 19:54:56,853 - INFO - Scheduled low temperature at 22:00
+2024-10-04 20:30:00,723 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-04 22:00:01,044 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-05 00:00:00,800 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-05 00:01:00,880 - INFO - Reloading heating periods.
+2024-10-05 00:01:00,881 - INFO - Starting to schedule temperature changes.
+2024-10-05 00:01:01,076 - INFO - Calculated 50th Percentile Threshold: 18.75p
+2024-10-05 00:01:01,076 - INFO - Cleared all previous schedules.
+2024-10-05 00:01:01,077 - INFO - Scheduled low temperature at 00:00
+2024-10-05 00:01:01,086 - INFO - Scheduled high temperature at 05:00
+2024-10-05 00:01:01,087 - INFO - Scheduled low temperature at 06:00
+2024-10-05 00:01:01,094 - INFO - Scheduled high temperature at 10:00
+2024-10-05 00:01:01,101 - INFO - Scheduled low temperature at 16:00
+2024-10-05 00:01:01,109 - INFO - Scheduled high temperature at 20:30
+2024-10-05 00:01:01,112 - INFO - Scheduled low temperature at 22:00
+2024-10-05 05:00:00,304 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-05 06:00:01,073 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-05 10:00:00,633 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-05 16:00:00,520 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-05 20:30:00,481 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-05 22:00:00,571 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-06 00:00:00,979 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-06 05:00:00,282 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-06 06:00:01,089 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-06 10:00:00,683 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-06 16:00:00,374 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-06 20:30:00,341 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-06 22:00:00,438 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-07 00:00:00,764 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-07 05:00:00,899 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-07 06:00:00,687 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-07 10:00:00,365 - INFO - Executed command: python3 thermostat_control.py 20.5
+2024-10-07 16:00:00,337 - INFO - Executed command: python3 thermostat_control.py 15
+2024-10-07 16:09:18,179 - INFO - Logging initialized.
+2024-10-07 16:09:18,180 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-07 16:09:18,180 - INFO - Starting to schedule temperature changes.
+2024-10-07 16:09:18,348 - INFO - Calculated 50th Percentile Threshold: 21.49p
+2024-10-07 16:09:18,349 - INFO - Cleared all previous schedules.
+2024-10-07 16:09:18,351 - INFO - Scheduled low temperature at 00:00
+2024-10-07 16:09:18,360 - INFO - Scheduled high temperature at 05:00
+2024-10-07 16:09:18,362 - INFO - Scheduled low temperature at 07:30
+2024-10-07 16:09:18,365 - INFO - Scheduled high temperature at 09:30
+2024-10-07 16:09:18,366 - INFO - Scheduled low temperature at 10:00
+2024-10-07 16:09:18,368 - INFO - Scheduled high temperature at 11:00
+2024-10-07 16:09:18,373 - INFO - Scheduled low temperature at 15:00
+2024-10-07 16:09:18,383 - INFO - Scheduled high temperature at 20:30
+2024-10-07 16:09:18,384 - INFO - Scheduled low temperature at 21:00
+2024-10-07 16:09:18,385 - INFO - Scheduled high temperature at 21:30
+2024-10-07 16:09:18,386 - INFO - Scheduled low temperature at 22:00
+2024-10-07 16:19:10,398 - INFO - Logging initialized.
+2024-10-07 16:19:10,398 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-07 16:19:10,398 - INFO - Starting to schedule temperature changes.
+2024-10-07 16:19:10,567 - INFO - Calculated 50th Percentile Threshold: 21.49p
+2024-10-07 16:19:10,567 - INFO - Cleared all previous temperature schedules.
+2024-10-07 16:19:10,570 - INFO - Scheduled low temperature at 00:00
+2024-10-07 16:19:10,578 - INFO - Scheduled high temperature at 05:00
+2024-10-07 16:19:10,580 - INFO - Scheduled low temperature at 07:30
+2024-10-07 16:19:10,584 - INFO - Scheduled high temperature at 09:30
+2024-10-07 16:19:10,585 - INFO - Scheduled low temperature at 10:00
+2024-10-07 16:19:10,586 - INFO - Scheduled high temperature at 11:00
+2024-10-07 16:19:10,592 - INFO - Scheduled low temperature at 15:00
+2024-10-07 16:19:10,602 - INFO - Scheduled high temperature at 20:30
+2024-10-07 16:19:10,603 - INFO - Scheduled low temperature at 21:00
+2024-10-07 16:19:10,604 - INFO - Scheduled high temperature at 21:30
+2024-10-07 16:19:10,605 - INFO - Scheduled low temperature at 22:00
+2024-10-04 00:00:05,715 - INFO - Logging initialized.
+2024-10-04 00:00:05,716 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:00:05,716 - INFO - Starting to schedule temperature changes.
+2024-10-04 00:00:06,736 - INFO - Logging initialized.
+2024-10-04 00:00:06,736 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:00:06,736 - INFO - Starting to schedule temperature changes.
+2024-10-04 00:00:07,735 - INFO - Logging initialized.
+2024-10-04 00:00:07,735 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:00:07,735 - INFO - Starting to schedule temperature changes.
+2024-10-04 00:00:08,732 - INFO - Logging initialized.
+2024-10-04 00:00:08,732 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:00:08,732 - INFO - Starting to schedule temperature changes.
+2024-10-04 00:00:09,734 - INFO - Logging initialized.
+2024-10-04 00:00:09,735 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:00:09,735 - INFO - Starting to schedule temperature changes.
+2024-10-04 00:02:27,975 - INFO - Logging initialized.
+2024-10-04 00:02:27,976 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-04 00:02:27,976 - INFO - Starting to schedule temperature changes.
+2024-10-07 16:41:34,567 - INFO - Logging initialized.
+2024-10-07 16:41:34,567 - INFO - Starting the OctoPyAgile temperature scheduler.
+2024-10-07 16:41:34,567 - INFO - Starting to schedule temperature changes.
+2024-10-07 16:41:34,729 - INFO - Calculated 50th Percentile Threshold: 21.49p
+2024-10-07 16:41:34,729 - INFO - Cleared all previous temperature schedules.
+2024-10-07 16:41:34,731 - INFO - Scheduled low temperature at 00:00
+2024-10-07 16:41:34,740 - INFO - Scheduled high temperature at 05:00
+2024-10-07 16:41:34,742 - INFO - Scheduled low temperature at 07:30
+2024-10-07 16:41:34,745 - INFO - Scheduled high temperature at 09:30
+2024-10-07 16:41:34,746 - INFO - Scheduled low temperature at 10:00
+2024-10-07 16:41:34,748 - INFO - Scheduled high temperature at 11:00
+2024-10-07 16:41:34,753 - INFO - Scheduled low temperature at 15:00
+2024-10-07 16:41:34,763 - INFO - Scheduled high temperature at 20:30
+2024-10-07 16:41:34,764 - INFO - Scheduled low temperature at 21:00
+2024-10-07 16:41:34,765 - INFO - Scheduled high temperature at 21:30
+2024-10-07 16:41:34,766 - INFO - Scheduled low temperature at 22:00

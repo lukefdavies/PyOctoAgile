@@ -66,8 +66,11 @@ def schedule_temperatures():
 
 def execute_command(command):
     """Execute a command and log the event."""
-    subprocess.run(command)
-    logging.info(f"Executed command: {' '.join(command)}")
+    result = subprocess.run(command)
+    if result.returncode == 0:
+        logging.info(f"Executed command: {' '.join(command)}")
+    else:
+        logging.error(f"Failed to execute command: {' '.join(command)}. Return code: {result.returncode}")
 
 def reload_periods():
     """Reload the heating periods and reschedule temperatures."""

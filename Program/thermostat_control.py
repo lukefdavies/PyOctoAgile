@@ -1,17 +1,16 @@
 import requests
 import sys
-
 import os
 
 # Fetch the Home Assistant token from environment variables
-home_assistant_token = os.getenv('HOME_ASSISTANT_TOKEN')
+HOME_ASSISTANT_TOKEN = os.getenv('HOME_ASSISTANT_TOKEN')
 
-if not home_assistant_token:
+if not HOME_ASSISTANT_TOKEN:
     raise ValueError("Error: HOME_ASSISTANT_TOKEN not set in environment variables.")
 
 # Replace with your Home Assistant URL and Long-Lived Access Token
 HOME_ASSISTANT_URL = "http://127.0.0.1:8123"
-API_TOKEN = "HOME_ASSISTANT_TOKEN"
+API_TOKEN = HOME_ASSISTANT_TOKEN
 
 # Thermostat entity IDs
 ENTITY_IDS = ["climate.living_room", "climate.hallway"]
@@ -48,5 +47,7 @@ if __name__ == "__main__":
     # Check the response
     if response.status_code == 200:
         print(f"Successfully set temperature to {TARGET_TEMPERATURE}°C for {', '.join(ENTITY_IDS)}")
+        sys.exit(0)  # Exit successfully
     else:
         print(f"Failed to set temperature. Status code: {response.status_code}, Response: {response.text}")
+        sys.exit(1)  # Exit with error
