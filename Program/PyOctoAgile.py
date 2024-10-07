@@ -21,17 +21,17 @@ logging.info("Logging initialized.")
 def schedule_temperatures():
     """Schedule temperature changes based on the sorted periods."""
     logging.info("Starting to schedule temperature changes.")
-    now = datetime.datetime.now().time()
-
+    
     # Get the heating periods and the percentile threshold
     periods, percentile_threshold = get_heating_periods()
 
     # Log the calculated 50th percentile price
     logging.info(f"Calculated 50th Percentile Threshold: {percentile_threshold:.2f}p")
 
-    # Clear all existing schedules
-    schedule.clear()
-    logging.info("Cleared all previous schedules.")
+    # Clear all temperature-related schedules but preserve the reload task
+    schedule.clear('temperature')
+
+    logging.info("Cleared all previous temperature schedules.")
 
     # Convert periods into 30-minute intervals for scheduling
     intervals = []
@@ -51,7 +51,7 @@ def schedule_temperatures():
             if period_start <= start_interval < period_end:
                 # If within a high temperature period and last scheduled was not high, schedule high temperature
                 if last_scheduled_temp != 'high':
-                    schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, HIGH_TEMPERATURE_COMMAND)
+                    schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, HIGH_TEMPERATURE_COMMAND).tag('temperature')
                     logging.info(f"Scheduled high temperature at {start_interval.strftime('%H:%M')}")
                     last_scheduled_temp = 'high'
                 scheduled = True
@@ -59,9 +59,10 @@ def schedule_temperatures():
 
         if not scheduled and last_scheduled_temp != 'low':
             # Schedule low temperature if not within any high temperature period and last scheduled was not low
-            schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, LOW_TEMPERATURE_COMMAND)
+            schedule.every().day.at(f"{start_interval.strftime('%H:%M')}").do(execute_command, LOW_TEMPERATURE_COMMAND).tag('temperature')
             logging.info(f"Scheduled low temperature at {start_interval.strftime('%H:%M')}")
             last_scheduled_temp = 'low'
+
 
 def execute_command(command):
     """Execute a command and log the event."""
