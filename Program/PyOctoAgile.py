@@ -10,8 +10,11 @@ import os
 HIGH_TEMPERATURE = 20.5
 LOW_TEMPERATURE = 15
 
-HIGH_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(HIGH_TEMPERATURE)]
-LOW_TEMPERATURE_COMMAND = ['python3', 'thermostat_control.py', str(LOW_TEMPERATURE)]
+home_directory = os.path.expanduser("~")
+thermostat_script_path = os.path.join(home_directory, 'PyOctoAgile/Program/thermostat_control.py')
+
+HIGH_TEMPERATURE_COMMAND = ['python3', thermostat_script_path, str(HIGH_TEMPERATURE)]
+LOW_TEMPERATURE_COMMAND = ['python3', thermostat_script_path, str(LOW_TEMPERATURE)]
 
 # Set up logging
 log_file = os.path.expanduser('~/PyOctoAgile/Program/pyoctoagile.log')
@@ -21,7 +24,7 @@ logging.info("Logging initialized.")
 def schedule_temperatures():
     """Schedule temperature changes based on the sorted periods."""
     logging.info("Starting to schedule temperature changes.")
-    
+
     # Get the heating periods and the percentile threshold
     periods, percentile_threshold = get_heating_periods()
 
@@ -63,23 +66,44 @@ def schedule_temperatures():
             logging.info(f"Scheduled low temperature at {start_interval.strftime('%H:%M')}")
             last_scheduled_temp = 'low'
 
-
 def execute_command(command):
     """Execute a command and log the event."""
-    result = subprocess.run(command)
-    if result.returncode == 0:
-        logging.info(f"Executed command: {' '.join(command)}")
-    else:
-        logging.error(f"Failed to execute command: {' '.join(command)}. Return code: {result.returncode}")
+    subprocess.run(command)
+    logging.info(f"Executed command: {' '.join(command)}")
 
 def reload_periods():
     """Reload the heating periods and reschedule temperatures."""
     logging.info("Reloading heating periods.")
     schedule_temperatures()  # Reschedule based on the updated periods
 
+def check_missed_schedule():
+    """Check if the current time is within a heating period and set the temperature immediately."""
+    now = datetime.datetime.now().time()
+
+    # Get the heating periods
+    periods, _ = get_heating_periods()
+
+    for period_start_str, period_end_str in periods:
+        period_start = datetime.datetime.strptime(period_start_str, '%H:%M').time()
+        period_end = datetime.datetime.strptime(period_end_str, '%H:%M').time()
+
+        if period_start <= now < period_end:
+            logging.info(f"Current time {now} is within a high temperature period ({period_start_str} - {period_end_str}). Setting high temperature.")
+            execute_command(HIGH_TEMPERATURE_COMMAND)
+            return
+
+    # If no high temperature period is found, set low temperature
+    logging.info(f"Current time {now} is not within any high temperature period. Setting low temperature.")
+    execute_command(LOW_TEMPERATURE_COMMAND)
+
 if __name__ == "__main__":
     # Initial scheduling
     logging.info("Starting the OctoPyAgile temperature scheduler.")
+    
+    # Check if the current time is within a heating period and adjust the temperature immediately
+    check_missed_schedule()
+
+    # Schedule temperature changes
     schedule_temperatures()
 
     # Schedule daily reloading of periods and prices
