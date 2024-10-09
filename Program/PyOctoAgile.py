@@ -35,6 +35,10 @@ def schedule_temperatures():
     schedule.clear('temperature')
 
     logging.info("Cleared all previous temperature schedules.")
+    
+    #Ensure the daily reload of heating perids remains scheduled (paranoia)
+    schedule.every().day.at("00:01").do(reload_periods)
+    logging.info(f"Scheduling daily reload of heating periods and prices at {reload_time}.")
 
     # Convert periods into 30-minute intervals for scheduling
     intervals = []
@@ -108,6 +112,7 @@ if __name__ == "__main__":
 
     # Schedule daily reloading of periods and prices
     schedule.every().day.at("00:01").do(reload_periods)
+    logging.info(f"Scheduling daily reload of heating periods and prices at {reload_time}.")
 
     # Run the scheduler
     while True:
