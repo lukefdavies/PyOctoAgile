@@ -13,6 +13,7 @@ LOW_TEMPERATURE = 15
 home_directory = os.path.expanduser("~")
 thermostat_script_path = os.path.join(home_directory, 'PyOctoAgile/Program/thermostat_control.py')
 
+reload_time = "00:01"
 HIGH_TEMPERATURE_COMMAND = ['python3', thermostat_script_path, str(HIGH_TEMPERATURE)]
 LOW_TEMPERATURE_COMMAND = ['python3', thermostat_script_path, str(LOW_TEMPERATURE)]
 
