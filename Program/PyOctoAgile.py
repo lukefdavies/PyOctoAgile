@@ -30,7 +30,7 @@ def schedule_temperatures():
     periods, percentile_threshold = get_heating_periods()
 
     # Log the calculated 50th percentile price
-    logging.info(f"Calculated 50th Percentile Threshold: {percentile_threshold:.2f}p")
+    logging.info(f"Calculated Threshold: {percentile_threshold:.2f}p")
 
     # Clear all temperature-related schedules but preserve the reload task
     schedule.clear('temperature')

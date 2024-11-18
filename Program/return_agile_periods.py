@@ -9,7 +9,7 @@ TARIFF_CODE = "E-1R-AGILE-23-12-06-L"
 octopus_api_url = f"https://api.octopus.energy/v1/products/{PRODUCT_CODE}/electricity-tariffs/{TARIFF_CODE}/standard-unit-rates/"
 
 # Configurable percentile
-PERCENTILE_THRESHOLD = 50  # Change this to adjust the percentile
+PERCENTILE_THRESHOLD = 35  # Change this to adjust the percentile
 
 # Timezone setup
 utc = pytz.utc
